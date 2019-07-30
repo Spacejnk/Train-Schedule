@@ -1,13 +1,18 @@
-$('#comment').val('');
 
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("time").innerHTML = t;
+}
 // get a new date (locale machine date time)
 var date = new Date();
+document.getElementById('today').innerHTML += date.toDateString();
 // get the date as a string
 var n = date.toDateString();
-// get the time as a string
-var time = date.toLocaleTimeString();
 
-// log the date in the browser console
-console.log('Today is:', n);
-// log the time in the browser console
-console.log('Time:',time);
+var trainName = "";
+var destination = "";
+var startTime = "";
+var frequency = 0;
