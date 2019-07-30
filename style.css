@@ -1,3 +1,16 @@
 body {
     background-image: url("image/train.jpg");
 }
+
+.autumn-color {
+    background-color: rgb(230, 99, 39);
+    border-radius: 5px;
+}
+
+.small{
+	width: 40%;
+}
+
+.text-warning {
+    font-size: 25px;
+}

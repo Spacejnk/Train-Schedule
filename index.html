@@ -11,8 +11,36 @@
     <title>trainschedule</title>
   </head>
   <body>
-  <div class="container"> 
-    <h1 class="text-center">Train Schedule</h1>
+  <div class="container">
+        <div class="jumbotron jumbotron-fluid autumn-color">
+            <div class="container">
+                <h1 class="text-center">Autumn Express</h1>
+                <h3 id="today"></h3>
+                <h3 id="time"></h3>
+            </div>
+        </div> 
+        <div class="small">
+        <form>
+                <div class="form-group">
+                  <label for="" class="text-warning">Train Name</label>
+                  <input type="" class="form-control" id="train-name" aria-describedby="" placeholder="train name here...">
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-warning">Destination</label>
+                    <input type="" class="form-control" id="destination" aria-describedby="" placeholder="destination...">
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-warning">First Train Time</label>
+                    <input type="" class="form-control" id="first-train" aria-describedby="" placeholder="hours mins or military time...">
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-warning">Frequency</label>
+                    <input type="" class="form-control" id="first-train" aria-describedby="" placeholder="frequency...">
+                </div>
+                <button type="submit" class="btn btn-danger">Add Train</button>
+              </form>
+            </div>
+
   </div>
 
     <!-- Optional JavaScript -->
