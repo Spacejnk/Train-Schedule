@@ -20,6 +20,28 @@
                 <h3 id="time"></h3>
             </div>
         </div> 
+
+        <div class="row train-status">
+            <div class="col-xs-12 col-sm-9">
+                <h5>Train Schedule</h5>
+                    <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col-xs-9">Train Name</th>
+                                <th scope="col-xs-9">Destination</th>
+                                <th scope="col-xs-9">Frequency</th>
+                                <th scope="col-xs-9">Next Arrival</th>
+                                <th scope="col-xs-9">Minutes Away</th>
+                                <th scope="col-xs-9">Remove</th>
+                              </tr>
+                            </thead>
+                            <tbody id="train-info">
+                              
+                            </tbody>
+                          </table>
+            </div>
+        </div>
+
         <div class="small">
         <form>
                 <div class="form-group">
@@ -38,13 +60,14 @@
                     <label for="" class="text-warning">Frequency</label>
                     <input type="" class="form-control" id="first-train" aria-describedby="" placeholder="frequency...">
                 </div>
-                <button type="submit" class="btn btn-danger">Add Train</button>
+                <button id="train-button" type="submit" class="btn btn-danger">Add Train</button>
               </form>
             </div>
 
   </div>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
