@@ -13,7 +13,7 @@ document.getElementById('today').innerHTML += date.toDateString();
 var n = date.toDateString();
 
   // Your web app's Firebase configuration
-  var firebaseConfig = {
+  var config = {
     apiKey: "AIzaSyBlKFGXVsslfgMcwKoID5VSEvgmYEfl46c",
     authDomain: "trainproject-26e1e.firebaseapp.com",
     databaseURL: "https://trainproject-26e1e.firebaseio.com",
@@ -23,40 +23,76 @@ var n = date.toDateString();
     appId: "1:714017961348:web:efc36a82df16bf5b"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(config);
 
+   // Create a variable to reference the database.
+   var database = firebase.database();
+
+  // Initial Values
 var trainName = "";
 var destination = "";
-var startTime = "";
-var frequency = 0;
+var firstTrain = "";
+var frequency = "";
 
 
-///  create on click to grab data from form....
-//var database = firebase.database();
  // add eventListerner for button
 
- $('#trian-button').on('click',function(){
-  var name = $('#employee-name').val().trim();
-  var role = $('#role').val().trim();
-  var st = $('#st').val().trim();
-  var mr= $('#mr').val().trim();
+ $('#train-button').on('click',function(event){
+    event.preventDefault();
+
+    // Grabbed values from text-boxes
+   trainName = $('#train-name').val().trim();
+   destination = $('#destination').val().trim();
+   firstTrain = $('#first-train').val().trim();
+   frequency = $('#frequency').val().trim();
 
 
 
-// object employee
+// object Trains
+ // Code for "Setting values in the database"
+ database.ref().set({
+trainName: trainName,
+destination: destination,
+firstTrain: firstTrain,
+frequency: frequency
+  });
+});
 
-var newEmp = {
-name: name,
-role: role,
-st: st,
-mr: mr
-};
-
-database.ref().push(newEmp);
-alert('emp has been succ added');
-$('#employee-name').val("");
-$('#role').val("");
-$('#st').empty();
-$('#mr').val();
-})
+database.ref().push(newTrains);
+alert('train has been succ added');
+$('#train-name').val("");
+$('#destination').val("");
+$('#first-train').val("");
+$('#frequency').val("");
 //data base below authentication has info
+
+ // Firebase watcher + initial loader HINT: .on("value")
+ database.ref().on("value", function(snapshot) {
+
+    // Log everything that's coming out of snapshot
+
+    console.log(snapshot.val().trainName);
+    console.log(snapshot.val().destination);
+    console.log(snapshot.val().firstTrain);
+    console.log(snapshot.val().frequency);
+
+    // Change the HTML to reflect
+    $('#train-name').text(snapshot.val().trainName);
+    $('#destination').text(snapshot.val().destination);
+    $('#first-train').text(snapshot.val().firstTrain);
+    $('#frequency').text(snapshot.val().frequency);
+
+// Handle the errors
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
+
+
+     // append to train schedule
+     var newRow = $("#train-info").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(firstTrain),
+        $("<td>").text(frequency),
+        
+    );
